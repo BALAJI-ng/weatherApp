@@ -1,0 +1,54 @@
+<section>
+    <mat-card class="form-card">
+
+        <mat-card-content>
+            <mat-form-field appearance="outline">
+                <mat-label>Add a Location</mat-label>
+                <input id="zipcode" matInput maxlength="5" [(ngModel)]="zipcode"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '').slice(0,5)" inputmode="numeric"
+                    pattern="[0-9]*" type="text" placeholder="Please enter zipcode">
+                <mat-hint class="hint-red">You can search and keep adding multiple zipcodes</mat-hint>
+            </mat-form-field>
+
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-raised-button color="primary" (click)="add_location()">Search</button>
+        </mat-card-actions>
+    </mat-card>
+
+    <div *ngIf="weatherdetailsbyzip.length" class="weather-cards-container">
+        <mat-card *ngFor="let weather of weatherdetailsbyzip; let i = index" class="weather-card">
+            <div class="weather-card-row">
+                <div class="weather-icon-col">
+                    <img mat-card-image *ngIf="weather.logo" [src]="
+            weather.logo === 'Clouds' ? 'https://www.angulartraining.com/images/weather/clouds.png' :
+            weather.logo === 'Clear' ? 'https://www.angulartraining.com/images/weather/sun.png' :
+            weather.logo === 'Rain' ? 'https://www.angulartraining.com/images/weather/rain.png' :
+            weather.logo === 'Snow' ? 'https://www.angulartraining.com/images/weather/snow.png' :
+            weather.logo === 'Haze' ? 'https://www.angulartraining.com/images/weather/clouds.png' :
+            weather.logo === 'Smoke' ? 'https://www.angulartraining.com/images/weather/clouds.png' : ''"
+                        alt="Weather Icon" class="image_curr_zip">
+                </div>
+                <div class="weather-content-col">
+                    <mat-card-header>
+                        <mat-card-title>{{ weather.countyName }}</mat-card-title>
+                        <mat-card-subtitle>{{ weather.currentCondition }}</mat-card-subtitle>
+                        <button mat-icon-button color="warn" class="close-btn" (click)="deletediv(i)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <div>Temperature: {{ weather.temperature }}</div>
+                        <div>Max Today: {{ weather.maxToday }}</div>
+                        <div>Min Today: {{ weather.minToday }}</div>
+                    </mat-card-content>
+                    <mat-card-actions>
+                        <button mat-raised-button color="accent" (click)="Forecast_zipcode(weather.zipCode!)">
+                            Forecast next 5 Days
+                        </button>
+                    </mat-card-actions>
+                </div>
+            </div>
+        </mat-card>
+    </div>
+</section>

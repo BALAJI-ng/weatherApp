@@ -1,0 +1,55 @@
+<div>
+    <h1>
+        <span *ngIf="weatherdetailsbyzip.length > 0">
+            {{weatherdetailsbyzip[0].countyName}} ({{weatherdetailsbyzip[0].zipCode}})
+        </span>
+    </h1>
+
+
+    <mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <!-- Day Column -->
+        <ng-container matColumnDef="day">
+            <mat-header-cell *matHeaderCellDef> Day </mat-header-cell>
+            <mat-cell *matCellDef="let weather; let i = index">
+                {{ dateStr[i] }}({{ day[i] }})
+            </mat-cell>
+        </ng-container>
+
+        <!-- Condition/High/Low Column -->
+        <ng-container matColumnDef="condition">
+            <mat-header-cell *matHeaderCellDef> Condition / High / Low </mat-header-cell>
+            <mat-cell *matCellDef="let weather">
+                {{weather.currentCondition}} <br> High: {{weather.maxToday}} <br> Low: {{weather.minToday}}
+            </mat-cell>
+        </ng-container>
+
+        <!-- Icon Column -->
+        <ng-container matColumnDef="icon">
+            <mat-header-cell *matHeaderCellDef> Icon </mat-header-cell>
+            <mat-cell *matCellDef="let weather">
+                <img class="image_curr_zip" *ngIf="weather.logo=='Clouds'"
+                    src="https://www.angulartraining.com/images/weather/clouds.png">
+                <img class="image_curr_zip" *ngIf="weather.logo=='Clear'"
+                    src="https://www.angulartraining.com/images/weather/sun.png">
+                <img class="image_curr_zip" *ngIf="weather.logo=='Rain'"
+                    src="https://www.angulartraining.com/images/weather/rain.png">
+                <img class="image_curr_zip" *ngIf="weather.logo=='Snow'"
+                    src="https://www.angulartraining.com/images/weather/snow.png">
+                <img class="image_curr_zip" *ngIf="weather.logo=='Haze'"
+                    src="https://www.angulartraining.com/images/weather/clouds.png">
+                <img class="image_curr_zip" *ngIf="weather.logo=='Smoke'"
+                    src="https://www.angulartraining.com/images/weather/clouds.png">
+            </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+
+    <div class="go-back-container">
+        <button mat-raised-button color="primary" routerLink="/enter-zipcode">
+            Go Back
+        </button>
+    </div>
+</div>

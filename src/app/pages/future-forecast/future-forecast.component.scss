@@ -1,0 +1,19 @@
+.image_curr_zip {
+  height: 100px !important;
+  width: 100px !important;
+}
+.go-back-container {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0;
+}
+.forecast-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.forecast-card {
+  width: 320px;
+}

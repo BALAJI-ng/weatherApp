@@ -1,0 +1,45 @@
+mat-form-field {
+  width: 100% !important;
+  margin-top: 15px !important;
+}
+
+.image_curr_zip {
+  width: 6rem !important;
+  height: 6rem !important;
+  margin-top: 2rem !important;
+}
+
+.weather-cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+  margin-top: 24px;
+}
+.weather-card {
+  width: 320px;
+}
+.close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+mat-card-header {
+  position: relative;
+}
+.hint-red {
+  color: #e53935; // Material red 600
+}
+.weather-card-row {
+  display: flex;
+  align-items: flex-start;
+}
+.weather-icon-col {
+  flex: 0 0 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.weather-content-col {
+  flex: 1;
+}

@@ -1,0 +1,60 @@
+<div>
+    <h1><span>Add a Location </span></h1>
+    <p> Enter a Zipcode: </p>
+    <input type="text" class="txtbox" name="zipcode" id="zipcode" /> <button type="submit" (click)="add_location()"> Add
+        Location</button>
+</div>
+
+<div *ngFor="let weather of weatherdetailsbyzip; index as i">
+    <h1><span>{{weather.countyName}}</span></h1>
+    <table style="height: 69px; width: 539px;">
+        <tbody>
+            <tr>
+                <td style="width: 700px;">&nbsp;</td>
+                <td style="width: 250px; text-align: right;" rowspan="4">
+
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Clouds'"
+                        src="https://www.angulartraining.com/images/weather/clouds.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Clear'"
+                        src="https://www.angulartraining.com/images/weather/sun.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Rain'"
+                        src="https://www.angulartraining.com/images/weather/rain.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Snow'"
+                        src="https://www.angulartraining.com/images/weather/snow.png">
+                    <!--Correction Start -->
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Haze'"
+                        src="https://www.angulartraining.com/images/weather/clouds.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Smoke'"
+                        src="https://www.angulartraining.com/images/weather/clouds.png">
+                    <!--Correction End -->
+
+                </td>
+                <td style="width: 20px; "><button class="close_btn" type="submit" (click)="deletediv(i)">X</button></td>
+            </tr>
+            <tr>
+                <td style="width: 700px; padding-left: 30px;">Current Condition: {{weather.currentCondition}}</td>
+                <td style="width: 20px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="width: 700px; padding-left: 30px;">Temperature: {{weather.temperature}}</td>
+                <td style="width: 20px;">&nbsp;</td>
+            </tr>
+            <tr>
+                <td style="width: 700px; padding-left: 30px;">Max Today: {{weather.maxToday}} - Min Today:
+                    {{weather.minToday}}</td>
+                <td style="width: 20px;">&nbsp;</td>
+            </tr>
+
+            <tr>
+                <td style="width: 20px; padding-left: 30px; ">
+                    <button type="submit" (click)="Forecast_zipcode(weather.zipCode!)">Forecast next 5 days</button>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+
+
+
+</div>

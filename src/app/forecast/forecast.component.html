@@ -1,0 +1,35 @@
+<a routerLink="/enter-zipcode" routerLinkActive="active">Go Back</a>
+<div>
+    <h1><span *ngIf="weatherdetailsbyzip.length > 0">{{weatherdetailsbyzip[0].countyName}}
+            ({{weatherdetailsbyzip[0].zipCode}}) </span></h1>
+
+    <table style="height: 21px; ">
+
+        <tbody>
+            <tr *ngFor="let weather of weatherdetailsbyzip; index as i">
+                <td style="width: 520px; padding-left: 30px;"> {{this.day[i]}} : {{weather.currentCondition}} - High:
+                    {{weather.maxToday}} - Low: {{weather.minToday}} </td>
+                <td style="width: 20px;">
+
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Clouds'"
+                        src="https://www.angulartraining.com/images/weather/clouds.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Clear'"
+                        src="https://www.angulartraining.com/images/weather/sun.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Rain'"
+                        src="https://www.angulartraining.com/images/weather/rain.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Snow'"
+                        src="https://www.angulartraining.com/images/weather/snow.png">
+                    <!--Correction Start -->
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Haze'"
+                        src="https://www.angulartraining.com/images/weather/clouds.png">
+                    <img class="image_curr_zip" *ngIf="weather.logo=='Smoke'"
+                        src="https://www.angulartraining.com/images/weather/clouds.png">
+                    <!--Correction End -->
+
+
+                </td>
+            </tr>
+        </tbody>
+
+    </table>
+</div>
